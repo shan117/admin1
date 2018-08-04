@@ -2,14 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+    <RelativeLayout
+        android:id="@+id/inputRel"
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <EditText
         android:id="@+id/editTxtSU"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="150dp"
         android:hint="enter super user email"
         android:inputType="textEmailAddress"/>
 
@@ -24,17 +33,52 @@
         android:hint="enter super user name"
         android:inputType="textEmailAddress"/>
 
+    <EditText
+        android:id="@+id/editTxtSupervisorUid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:hint="enter supervisor userid"
+        android:inputType="textEmailAddress"/>
+
+        <EditText
+            android:id="@+id/editTxtSupervisorName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTxtSupervisorUid"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:hint="enter supervisor name"
+            android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/editTxtSupervisorPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTxtSupervisorName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:hint="enter supervisor password"
+        android:inputType="textEmailAddress"/>
+
+
+
+
+    </RelativeLayout>
+
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_marginTop="150dp"
         android:layout_alignBaseline="@+id/addsu"
         android:layout_alignBottom="@+id/addsu"
         android:layout_marginEnd="11dp"
         android:layout_marginRight="11dp"
         android:layout_toLeftOf="@+id/addsu"
         android:layout_toStartOf="@+id/addsu"
+        android:layout_below="@id/inputRel"
         android:text="Add User" />
 
     <Button
@@ -43,10 +87,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="89dp"
-        android:layout_marginRight="89dp"
-        android:layout_marginTop="211dp"
-        android:text="Add Superuser" />
+        android:layout_below="@+id/inputRel"
+        android:layout_marginEnd="72dp"
+        android:layout_marginRight="72dp"
+        android:layout_marginTop="37dp"
+        android:text="Dummy Button" />
 
 </RelativeLayout>
