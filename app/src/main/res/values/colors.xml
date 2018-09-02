@@ -2,5 +2,22 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff5b5c</color>
+
+    <color name="orange">#FF3909</color>
+    <color name="colorRed">#ff5b5c</color>
+    <color name="colorAccentDark">#00B482</color>
+
+    <color name="colorBlack">#555555</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGrey">#707070</color>
+    <color name="colorGreyLight">#8A8A8A</color>
+    <color name="colorDivider">#44000000</color>
+    <color name="colorBg">#f2f2f2</color>
+
+    <color name="colorEditText">#616161</color>
+    <color name="colorBottomMenuText">#616161</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#616161</color>
+    <color name="colorTextLightGrey">#9E9E9E</color>
 </resources>

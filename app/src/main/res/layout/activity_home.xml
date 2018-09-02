@@ -2,95 +2,173 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+
     <RelativeLayout
-        android:id="@+id/inputRel"
-        android:layout_marginTop="100dp"
+        android:id="@+id/rl_holder"
+        android:padding="@dimen/margin_16"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/editTxtSU"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
-        android:hint="enter super user email"
-        android:inputType="textEmailAddress"/>
+        <TextView
+            android:layout_marginBottom="@dimen/margin_4"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/margin_16"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:text="Name : "
+            android:textSize="@dimen/text_size_l"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tv_name_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
+        <TextView
+            android:lines="1"
+            android:layout_marginRight="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_16"
+            android:layout_toRightOf="@id/tv_name_title"
+            android:text="Abbas Piplodawala"
+            android:textSize="@dimen/text_size_l"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/editTxtName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTxtSU"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:hint="enter super user name"
-        android:inputType="textEmailAddress"/>
+        <TextView
+            android:layout_marginBottom="@dimen/margin_4"
+            android:layout_below="@id/tv_name_title"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:text="Email : "
+            android:textSize="@dimen/text_size_l"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tv_email_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/editTxtSupervisorUid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:hint="enter supervisor userid"
-        android:inputType="textEmailAddress"/>
+        <TextView
 
-        <EditText
-            android:id="@+id/editTxtSupervisorName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editTxtSupervisorUid"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:hint="enter supervisor name"
-            android:inputType="textEmailAddress"/>
+            android:lines="1"
+            android:layout_marginRight="@dimen/margin_8"
+            android:layout_below="@id/tv_name_title"
+            android:layout_toRightOf="@id/tv_email_title"
+            android:text="abbaspiplodawala@gmail.com"
+            android:textSize="@dimen/text_size_l"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/editTxtSupervisorPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTxtSupervisorName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:hint="enter supervisor password"
-        android:inputType="textEmailAddress"/>
+        <TextView
+            android:layout_marginBottom="@dimen/margin_4"
+            android:layout_below="@id/tv_email_title"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:text="Company : "
+            android:textSize="@dimen/text_size_l"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tv_company_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
+        <TextView
+            android:lines="1"
+            android:layout_marginRight="@dimen/margin_8"
+            android:layout_below="@id/tv_email_title"
+            android:layout_toRightOf="@id/tv_company_title"
+            android:text="Loreum ispum"
+            android:textSize="@dimen/text_size_l"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tv_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
+        <TextView
+            android:layout_marginBottom="@dimen/margin_16"
+            android:layout_below="@id/tv_company_title"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:text="Role : "
+            android:textSize="@dimen/text_size_l"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tv_role_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
+        <TextView
+            android:lines="1"
+            android:layout_marginRight="@dimen/margin_8"
+            android:layout_below="@id/tv_company_title"
+            android:layout_toRightOf="@id/tv_role_title"
+            android:text="Loreum ispum"
+            android:textSize="@dimen/text_size_l"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tv_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_alignBaseline="@+id/addsu"
-        android:layout_alignBottom="@+id/addsu"
-        android:layout_marginEnd="11dp"
-        android:layout_marginRight="11dp"
-        android:layout_toLeftOf="@+id/addsu"
-        android:layout_toStartOf="@+id/addsu"
-        android:layout_below="@id/inputRel"
-        android:text="Add User" />
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_below="@id/rl_holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/addsu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/inputRel"
-        android:layout_marginEnd="72dp"
-        android:layout_marginRight="72dp"
-        android:layout_marginTop="37dp"
-        android:text="Dummy Button" />
+            <ImageView
+                android:id="@+id/iv_add"
+                android:padding="@dimen/margin_24"
+                android:background="@drawable/round"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_add_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="@dimen/margin_12"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/colorSecondaryText"
+                android:text="Add User"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/margin_16"
+            android:orientation="vertical"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_analyse"
+                android:padding="@dimen/margin_24"
+                android:background="@drawable/round"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_analyse_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="@dimen/margin_12"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/colorSecondaryText"
+                android:text="Analayse"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
 
 </RelativeLayout>
