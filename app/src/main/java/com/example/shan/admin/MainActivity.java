@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         btnSignIn = (SignInButton) findViewById(R.id.btn_sign_in);
 
-        slider = (SliderLayout) findViewById(R.id.slider);
+       /* slider = (SliderLayout) findViewById(R.id.slider);
 
         ArrayList<Integer> images = new ArrayList<Integer>();
         images.add(R.drawable.image1);
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         slider.setPresetTransformer(SliderLayout.Transformer.Accordion);
         slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         slider.setCustomAnimation(new DescriptionAnimation());
-        slider.setDuration(4000);
+        slider.setDuration(4000);*/
 
         btnSignIn.setSize(SignInButton.SIZE_STANDARD);
         btnSignIn.setOnClickListener(this);

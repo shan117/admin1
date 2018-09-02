@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shan.admin.misc.CustomProgressDialog;
@@ -38,6 +39,8 @@ public class AddUserActivity extends AppCompatActivity {
     private EditText etName;
     private EditText supervisorUserId, supervisorPwd, supervisorName;
 
+    private TextView tvTitle;
+
     String encryptedEmail;
     String encryptedMailLoggedinUser;
 
@@ -51,6 +54,8 @@ public class AddUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_user);
 
         toolbar=(Toolbar) findViewById(R.id.toolbar);
+
+        tvTitle=(TextView) findViewById(R.id.toolbar_title);
 
         ilName=(TextInputLayout) findViewById(R.id.il_name);
         ilEmail=(TextInputLayout) findViewById(R.id.il_email);
@@ -89,12 +94,19 @@ public class AddUserActivity extends AppCompatActivity {
             ilSVPswd.setVisibility(View.VISIBLE);
             ilEmail.setVisibility(View.GONE);
             ilName.setVisibility(View.GONE);
+            tvTitle.setText("Add Supervisor");
         } else {
             ilSVId.setVisibility(View.GONE);
             ilSVPswd.setVisibility(View.GONE);
             ilSVName.setVisibility(View.GONE);
             ilName.setVisibility(View.VISIBLE);
             ilEmail.setVisibility(View.VISIBLE);
+
+            if (user.getRole().equalsIgnoreCase("superAdmin")) {
+                tvTitle.setText("Add Superuser");
+            }else{
+                tvTitle.setText("Add user");
+            }
         }
 
 
