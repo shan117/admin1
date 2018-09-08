@@ -30,25 +30,24 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
 
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout moviesLayout;
-        TextView movieTitle;
-        TextView data;
-        TextView movieDescription;
-        TextView rating;
-        TextView time;
+        TextView tvTime;
+        TextView tvDate;
+        TextView tvName;
+        TextView tvUserId;
+        TextView tvLocation;
 
-        ImageView faceImage;
+        ImageView iv_profile;
 
 
         public MovieViewHolder(View v) {
             super(v);
-//            moviesLayout = (LinearLayout) v.findViewById(R.id.movies_layout);
-//            movieTitle = (TextView) v.findViewById(R.id.title);
-//            data = (TextView) v.findViewById(R.id.subtitle);
-//            movieDescription = (TextView) v.findViewById(R.id.description);
-            rating = (TextView) v.findViewById(R.id.barCode);
-            faceImage =(ImageView) v.findViewById(R.id.rating_image2);
-            time =(TextView)v.findViewById(R.id.logTime);
+            tvName = (TextView) v.findViewById(R.id.tv_name);
+            tvUserId = (TextView) v.findViewById(R.id.tv_username);
+            tvLocation = (TextView) v.findViewById(R.id.tv_location);
+            tvTime = (TextView) v.findViewById(R.id.tv_time);
+            tvDate = (TextView) v.findViewById(R.id.tv_date);
+
+            iv_profile = (ImageView) v.findViewById(R.id.iv_profile);
         }
     }
 
@@ -68,12 +67,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
 
     @Override
     public void onBindViewHolder(final MovieViewHolder holder, final int position) {
-String a;
+        String a;
 
-
-
-        FirebaseStorage storage= FirebaseStorage.getInstance();
-
+        FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReferenceFromUrl(movies.get(position).getImagePath());
 
        /* Glide.with(this.context)
@@ -82,39 +78,41 @@ String a;
                 .into(holder.faceImage);
 */
 
-       Glide.with(this.context)
-               .using(new FirebaseImageLoader())
-               .load(storageRef)
-               .asBitmap()
-               .centerCrop()
-               .dontAnimate()
-               .into(new BitmapImageViewTarget(holder.faceImage){
-                   @Override
-                   protected void setResource(Bitmap resource){
-                       RoundedBitmapDrawable circularBitmapDrawable =
-                               RoundedBitmapDrawableFactory.create(context.getResources(), resource);
-                       circularBitmapDrawable.setCircular(true);
-                       holder.faceImage.setImageDrawable(circularBitmapDrawable);
-                   }
-               });
+        Glide.with(this.context)
+                .using(new FirebaseImageLoader())
+                .load(storageRef)
+                .asBitmap()
+                .centerCrop()
+                .dontAnimate()
+                .into(new BitmapImageViewTarget(holder.iv_profile) {
+                    @Override
+                    protected void setResource(Bitmap resource) {
+                        RoundedBitmapDrawable circularBitmapDrawable =
+                                RoundedBitmapDrawableFactory.create(context.getResources(), resource);
+                        circularBitmapDrawable.setCircular(true);
+                        holder.iv_profile.setImageDrawable(circularBitmapDrawable);
+                    }
+                });
+        String date=movies.get(position).getTime().substring(0,10);
+        String time=movies.get(position).getTime().substring(11);
 
+        if(position>0)
+        {
+            if(date.contentEquals(movies.get(position-1).getTime().substring(0,10)))
+            {
+                holder.tvDate.setVisibility(View.GONE);
+            }else {
+                holder.tvDate.setVisibility(View.VISIBLE);
+                holder.tvDate.setText(date);
+            }
+        }else {
+            holder.tvDate.setVisibility(View.VISIBLE);
+            holder.tvDate.setText(date);
+        }
 
+        holder.tvLocation.setText(""+movies.get(position).getLatitude1()+", "+movies.get(position).getLongitude1());
+        holder.tvTime.setText(time);
 
-
-
-        String time =movies.get(position).getTime();
-        holder.rating.setText(movies.get(position).getBarcodeValue());
-        holder.time.setText(movies.get(position).getTime());
-
-
-/*       byte[] byteArray = movies.get(position).getFaceImage().getBytes();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-
-        holder.faceImage.setImageBitmap(bitmap);*/
-//        holder.movieTitle.setText(movies.get(position).getFaceImage());
-//        holder.data.setText(movies.get(position).getReleaseDate());
-//        holder.movieDescription.setText(movies.get(position).getOverview());
-//        holder.rating.setText(movies.get(position).getVoteAverage().toString());
     }
 
     @Override

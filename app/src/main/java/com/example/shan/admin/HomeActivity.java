@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView ivAdd;
     private ImageView ivAnalyse;
     private ImageView ivLogout;
+    private ImageView ivAddLocation;
 
     private TextView tvRole;
     private TextView tvName;
@@ -56,9 +57,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         ivAdd=(ImageView) findViewById(R.id.iv_add);
         ivAnalyse=(ImageView) findViewById(R.id.iv_analyse);
         ivLogout=(ImageView) findViewById(R.id.iv_logout);
+        ivAddLocation=(ImageView) findViewById(R.id.iv_add_location);
 
         ivAdd.setOnClickListener(this);
         ivAnalyse.setOnClickListener(this);
+        ivLogout.setOnClickListener(this);
+        ivAddLocation.setOnClickListener(this);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions. DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -100,11 +104,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.iv_analyse:
-                startActivity(new Intent(HomeActivity.this, AddUserActivity.class));
+                startActivity(new Intent(HomeActivity.this, ListActivity.class));
                 break;
 
             case R.id.iv_logout:
                 signOut();
+                break;
+
+            case R.id.iv_add_location:
+                startActivity(new Intent(HomeActivity.this, AddLocationActivity.class));
                 break;
         }
 
