@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBg"
+    android:id="@+id/parent"
     tools:context="com.example.shan.admin.AddUserActivity">
 
     <android.support.v7.widget.Toolbar

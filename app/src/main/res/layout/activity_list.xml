@@ -97,6 +97,17 @@
         android:layout_below="@id/ll_filter"
         android:scrollbars="vertical" />
 
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_no_data"
+        android:textSize="@dimen/text_size_xl"
+        android:textColor="@color/colorPrimaryText"
+        android:gravity="center"
+        android:text="No match found"
+        android:layout_below="@id/ll_filter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
 </RelativeLayout>
 

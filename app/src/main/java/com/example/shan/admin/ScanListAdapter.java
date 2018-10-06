@@ -9,22 +9,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.example.shan.admin.misc.Helper;
+import com.example.shan.admin.pojo.Scan;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
-//import info.androidhive.retrofit.model.Movie;
+public class ScanListAdapter extends RecyclerView.Adapter<ScanListAdapter.MovieViewHolder> {
 
-public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder> {
-
-    private List<Model> movies;
+    private List<Scan> list;
     private int rowLayout;
     private Context context;
 
@@ -51,15 +50,15 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         }
     }
 
-    public MoviesAdapter(List<Model> movies, int rowLayout, Context context) {
-        this.movies = movies;
+    public ScanListAdapter(List<Scan> list, int rowLayout, Context context) {
+        this.list = list;
         this.rowLayout = rowLayout;
         this.context = context;
     }
 
     @Override
-    public MoviesAdapter.MovieViewHolder onCreateViewHolder(ViewGroup parent,
-                                                            int viewType) {
+    public ScanListAdapter.MovieViewHolder onCreateViewHolder(ViewGroup parent,
+                                                              int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
         return new MovieViewHolder(view);
     }
@@ -70,13 +69,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         String a;
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReferenceFromUrl(movies.get(position).getImagePath());
-
-       /* Glide.with(this.context)
-                .using(new FirebaseImageLoader())
-                .load(storageRef)
-                .into(holder.faceImage);
-*/
+        StorageReference storageRef = storage.getReferenceFromUrl(list.get(position).getImagePath());
 
         Glide.with(this.context)
                 .using(new FirebaseImageLoader())
@@ -93,12 +86,12 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
                         holder.iv_profile.setImageDrawable(circularBitmapDrawable);
                     }
                 });
-        String date=movies.get(position).getTime().substring(0,10);
-        String time=movies.get(position).getTime().substring(11);
+        String date=list.get(position).getTime().substring(0,10);
+        String time=list.get(position).getTime().substring(11);
 
         if(position>0)
         {
-            if(date.contentEquals(movies.get(position-1).getTime().substring(0,10)))
+            if(date.contentEquals(list.get(position-1).getTime().substring(0,10)))
             {
                 holder.tvDate.setVisibility(View.GONE);
             }else {
@@ -110,13 +103,15 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
             holder.tvDate.setText(date);
         }
 
-        holder.tvLocation.setText(""+movies.get(position).getLatitude1()+", "+movies.get(position).getLongitude1());
+        holder.tvLocation.setText(""+list.get(position).getLocationName());
         holder.tvTime.setText(time);
+        holder.tvName.setText(list.get(position).getSupervisorName());
+        holder.tvUserId.setText(Helper.base64ToString(list.get(position).getSupervisor()));
 
     }
 
     @Override
     public int getItemCount() {
-        return movies.size();
+        return list.size();
     }
 }

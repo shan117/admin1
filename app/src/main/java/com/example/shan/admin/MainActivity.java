@@ -260,6 +260,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                             });
                         }
                         pd.dismiss();
+                        prefsEditor.putBoolean("isSessionActive",true);
+                        prefsEditor.commit();
                         startActivity(new Intent(MainActivity.this, HomeActivity.class));
                         MainActivity.this.finish();
                     }
