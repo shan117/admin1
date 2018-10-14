@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBg"
+    android:id="@+id/parent"
+    tools:context="com.example.shan.admin.AddUserActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="2dp"
+        android:visibility="visible"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="QR Code"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_size_l"
+            android:textStyle="bold" />
+    </android.support.v7.widget.Toolbar>
+
+
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_32"
+        android:id="@+id/btn_download"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_32"
+        android:layout_marginRight="@dimen/margin_32"
+        android:background="@color/colorPrimary"
+        android:text="Download"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_size_l" />
+
+    <Button
+        android:layout_above="@id/btn_download"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:id="@+id/btn_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_32"
+        android:layout_marginRight="@dimen/margin_32"
+        android:background="@color/colorPrimary"
+        android:text="Mail"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_size_l" />
+
+    <ImageView
+        android:id="@+id/iv_qr_code"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/btn_mail"
+        android:layout_margin="@dimen/margin_24"
+        />
+
+</RelativeLayout>

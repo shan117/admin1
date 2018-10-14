@@ -1,6 +1,8 @@
 package com.example.shan.admin;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -80,49 +82,16 @@ public class GenerateQRCodeActivity extends AppCompatActivity {
                 if (etValue.getText().toString().isEmpty() || etValue.getText().toString().length() == 0) {
                     CustomSnackbar.createSnackbarRed("Please enter QR code value", parent, GenerateQRCodeActivity.this);
                 } else{
-                    generateQRCode(etValue.getText().toString());
+                    SharedPreferences pref = getSharedPreferences("userDetail", 0);
+                    SharedPreferences.Editor prefsEditor = pref.edit();
+                    prefsEditor.putString("qrCodeValue",etValue.getText().toString());
+                    prefsEditor.commit();
+                    startActivity(new Intent(GenerateQRCodeActivity.this, ShowQRCodeActivity.class));
                 }
             }
         });
     }
 
-    private void generateQRCode(String value)
-    {
-        final ProgressDialog pd= CustomProgressDialog.ctor(GenerateQRCodeActivity.this);
-        pd.show();
-        try {
-            QRCodeWriter qrCodeWriter = new QRCodeWriter();
-            BitMatrix bitMatrix = qrCodeWriter.encode(value, BarcodeFormat.QR_CODE, 512, 512);
-            int width = bitMatrix.getWidth();
-            int height = bitMatrix.getHeight();
-            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
-                }
-            }
 
-            String path = Environment.getExternalStorageDirectory().toString();
-            OutputStream fOut = null;
-            File file = new File(path, value+".jpg"); // the File to save , append increasing numeric counter to prevent files from getting overwritten.
-            fOut = new FileOutputStream(file);
-
-            bmp.compress(Bitmap.CompressFormat.JPEG, 85, fOut); // saving the Bitmap to a file compressed as a JPEG with 85% compression rate
-            fOut.flush(); // Not really required
-            fOut.close(); // do not forget to close the stream
-
-            MediaStore.Images.Media.insertImage(getContentResolver(),file.getAbsolutePath(),file.getName(),file.getName());
-            CustomSnackbar.createSnackbarRed("QR Code generated succcessfully", parent, GenerateQRCodeActivity.this);
-
-        } catch (WriterException e) {
-            System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
-        } catch(FileNotFoundException e){
-            System.out.println("Could not generate QR Code, IOException :: " + e.getMessage());
-        }catch (IOException e) {
-            System.out.println("Could not generate QR Code, IOException :: " + e.getMessage());
-        }finally {
-            pd.dismiss();
-        }
-    }
 
 }
