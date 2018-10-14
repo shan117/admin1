@@ -126,12 +126,9 @@ public class AddUserActivity extends AppCompatActivity {
                         CustomSnackbar.createSnackbarRed("Please enter name of supervisor", parent, AddUserActivity.this);
 
                     } else if (supervisorUserId.getText().toString().isEmpty() || supervisorUserId.getText().toString().length() == 0) {
-                        CustomSnackbar.createSnackbarRed("Please enter email id", parent, AddUserActivity.this);
+                        CustomSnackbar.createSnackbarRed("Please enter user id", parent, AddUserActivity.this);
 
-                    } else if (android.util.Patterns.EMAIL_ADDRESS.matcher(supervisorUserId.getText().toString()).matches()) {
-                        CustomSnackbar.createSnackbarRed("Please enter valid email id", parent, AddUserActivity.this);
-
-                    }else if (supervisorPwd.getText().toString().isEmpty() || supervisorPwd.getText().toString().length() == 0) {
+                    } else if (supervisorPwd.getText().toString().isEmpty() || supervisorPwd.getText().toString().length() == 0) {
                         CustomSnackbar.createSnackbarRed("Please enter password", parent, AddUserActivity.this);
 
                     }else

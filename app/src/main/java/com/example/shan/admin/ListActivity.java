@@ -101,7 +101,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         int i=0;
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = database.getReference().child("data");
+        final DatabaseReference myRef = database.getReference().child("companies").child(user.getCompany()).child("data");
 
 
         final ProgressDialog pd= CustomProgressDialog.ctor(ListActivity.this);

@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView ivAdd;
     private ImageView ivAnalyse;
     private ImageView ivLogout;
+    private ImageView ivCodeGen;
 
     private TextView tvRole;
     private TextView tvName;
@@ -58,10 +59,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         ivAdd=(ImageView) findViewById(R.id.iv_add);
         ivAnalyse=(ImageView) findViewById(R.id.iv_analyse);
         ivLogout=(ImageView) findViewById(R.id.iv_logout);
+        ivCodeGen=(ImageView) findViewById(R.id.iv_generate_code);
 
         ivAdd.setOnClickListener(this);
         ivAnalyse.setOnClickListener(this);
         ivLogout.setOnClickListener(this);
+        ivCodeGen.setOnClickListener(this);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions. DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -104,6 +107,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.iv_analyse:
                 startActivity(new Intent(HomeActivity.this, ListActivity.class));
+                break;
+
+            case R.id.iv_generate_code:
+                startActivity(new Intent(HomeActivity.this, GenerateQRCodeActivity.class));
                 break;
 
             case R.id.iv_logout:
