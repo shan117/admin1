@@ -4,12 +4,17 @@ import android.*;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -229,6 +234,42 @@ public class ShowQRCodeActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
+    public Bitmap drawTextToBitmap(Context mContext, Bitmap bitmap, String mText) {
+        try {
+            android.graphics.Bitmap.Config bitmapConfig =   bitmap.getConfig();
+            // set default bitmap config if none
+            if(bitmapConfig == null) {
+                bitmapConfig = android.graphics.Bitmap.Config.ARGB_8888;
+            }
+            // resource bitmaps are imutable,
+            // so we need to convert it to mutable one
+            bitmap = bitmap.copy(bitmapConfig, true);
+
+            Canvas canvas = new Canvas(bitmap);
+            // new antialised Paint
+            Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            // text color - #3D3D3D
+            paint.setColor(Color.rgb(110,110, 110));
+            // text size in pixels
+            paint.setTextSize((int) (24 ));
+
+            // draw text to the Canvas center
+            Rect bounds = new Rect();
+            paint.getTextBounds(mText, 0, mText.length(), bounds);
+            int x = (bitmap.getWidth() - bounds.width()) / 2;
+            int y = 36;
+
+            canvas.drawText(mText, x , y , paint);
+
+            return bitmap;
+        } catch (Exception e) {
+            // TODO: handle exception
+
+            return null;
+        }
+
+    }
+
     private void downloadQRCode(){
         try {
             String path = Environment.getExternalStorageDirectory().toString();
@@ -274,6 +315,7 @@ public class ShowQRCodeActivity extends AppCompatActivity implements View.OnClic
                 }
             }
 
+            bitmap=drawTextToBitmap(ShowQRCodeActivity.this,bitmap,"Value : "+value);
             ivQRCode.setImageBitmap(bitmap);
 
 
